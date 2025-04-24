@@ -33,10 +33,10 @@ class MENU(State):
         if session.input == "1":
             session.change_state(LOGIN)
         elif session.input == "2":
-            session.output += "Thank you for using me"
+            session.add_output("Thank you for using me")
             session.end()
         else:
-            session.output += "Invalid option. Please try again."
+            session.add_output("Invalid option. Please try again.")
             return
 
 
@@ -50,7 +50,7 @@ class LOGIN(State):
             session.add_output("Invalid token. Please try again.")
             return
         else:
-            session.output += "Logged in successfully."
+            session.add_output("Logged in successfully.")
             session.change_state(MENU)
 
 
