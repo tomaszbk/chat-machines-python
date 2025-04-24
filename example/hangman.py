@@ -157,7 +157,7 @@ class GAME_END(State):
             session.output += "Opción inválida."
 
 
-hangman_state_machine = ChatMachine()
+hangman_state_machine = ChatMachine(start_state=MENU)
 
 
 @hangman_state_machine.global_on_enter

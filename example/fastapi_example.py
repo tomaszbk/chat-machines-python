@@ -12,7 +12,7 @@ class MENU(State):
                             1. Log in
                             2. Exit""")
 
-    def on_exit(session: SessionState):
+    def on_update(session: SessionState):
         if session.input == "1":
             session.change_state(LOGIN)
         elif session.input == "2":
@@ -37,7 +37,7 @@ class LOGIN(State):
             session.change_state(MENU)
 
 
-chat_machine = ChatMachine()
+chat_machine = ChatMachine(start_state=MENU)
 
 
 @app.post("/chat")

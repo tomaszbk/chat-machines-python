@@ -1,11 +1,10 @@
 import textwrap
-from typing import Callable, Self
 
 from pydantic import BaseModel, ConfigDict
 
 
 class State:
-    _registry: list[Self] = []
+    _registry: list = []
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
@@ -54,26 +53,17 @@ class ChatMachine:
 
     sessions: dict[str, SessionState] = {}
 
-    def __init__(self):
+    def __init__(self, start_state: State = None):
         """
         Initializes the state machine.
-
-        Args:
-            states (list): A dictionary where keys are state names (str)
-                           and values are instances of State subclasses.
         """
         self.states = State._registry
-        self._global_on_enter_hook: Callable[[SessionState], None] = (
-            lambda session: None
-        )
-        self._global_on_update_hook: Callable[[SessionState], None] = (
-            lambda session: None
-        )
-        self._global_on_exit_hook: Callable[[SessionState], None] = lambda session: None
+        self.start_state = start_state
+        self._global_on_enter_hook = lambda session: None
+        self._global_on_update_hook = lambda session: None
+        self._global_on_exit_hook = lambda session: None
 
-    def global_on_enter(
-        self, fn: Callable[[SessionState], None]
-    ) -> Callable[[SessionState], None]:
+    def global_on_enter(self, fn):
         """
         Decorator to register a global on_enter hook.
         Usage:
@@ -84,9 +74,7 @@ class ChatMachine:
         self._global_on_enter_hook = fn
         return fn
 
-    def global_on_update(
-        self, fn: Callable[[SessionState], None]
-    ) -> Callable[[SessionState], None]:
+    def global_on_update(self, fn):
         """
         Decorator to register a global on_update hook.
         Usage:
@@ -97,9 +85,7 @@ class ChatMachine:
         self._global_on_update_hook = fn
         return fn
 
-    def global_on_exit(
-        self, fn: Callable[[SessionState], None]
-    ) -> Callable[[SessionState], None]:
+    def global_on_exit(self, fn):
         """
         Decorator to register a global on_exit hook.
         Usage:
@@ -124,7 +110,7 @@ class ChatMachine:
 
         try:
             if not session._current_state:
-                session._current_state = self.states[0]
+                session._current_state = self.start_state
                 self._global_on_enter_hook(session)
                 session._current_state.on_enter(session)
             else:
