@@ -1,10 +1,10 @@
 # Python Chat Machines
 
-[![CI](https://img.shields.io/github/actions/workflow/status/pydantic/pydantic/ci.yml?branch=main&logo=github&label=CI)](https://github.com/pydantic/pydantic/actions?query=event%3Apush+branch%3Amain+workflow%3ACI)
+[![CI](https://img.shields.io/github/actions/workflow/status/pydantic/pydantic/ci.yml?branch=main&logo=github&label=CI)](https://github.com/tomaszbk/chat-machines-python/actions)
 [![Coverage](https://coverage-badge.samuelcolvin.workers.dev/pydantic/pydantic.svg)](https://coverage-badge.samuelcolvin.workers.dev/redirect/pydantic/pydantic)
-[![pypi](https://img.shields.io/pypi/v/pydantic.svg)](https://pypi.python.org/pypi/pydantic)
-[![versions](https://img.shields.io/pypi/pyversions/pydantic.svg)](https://github.com/pydantic/pydantic)
-[![license](https://img.shields.io/github/license/pydantic/pydantic.svg)](https://github.com/pydantic/pydantic/blob/main/LICENSE)
+[![pypi](https://img.shields.io/pypi/v/pydantic.svg)](https://pypi.org/manage/project/chatmachine)
+[![versions](https://img.shields.io/pypi/pyversions/pydantic.svg)](https://github.com/tomaszbk/chat-machines-python)
+[![license](https://img.shields.io/github/license/pydantic/pydantic.svg)](https://github.com/tomaszbk/chat-machines-python/blob/master/LICENSE)
 
 Small, simple, and typed Python library for building chatbots using state machines, that can be integrated with REST APIs, discord, whatsapp, telegram, etc.
 
