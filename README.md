@@ -2,7 +2,7 @@
 
 [![CI](https://img.shields.io/github/actions/workflow/status/pydantic/pydantic/ci.yml?branch=main&logo=github&label=CI)](https://github.com/tomaszbk/chat-machines-python/actions)
 [![Coverage](https://coverage-badge.samuelcolvin.workers.dev/pydantic/pydantic.svg)](https://coverage-badge.samuelcolvin.workers.dev/redirect/pydantic/pydantic)
-[![pypi](https://img.shields.io/pypi/v/pydantic.svg)](https://pypi.org/manage/project/chatmachine)
+[![pypi](https://img.shields.io/pypi/v/chatmachine)](https://pypi.org/manage/project/chatmachine)
 [![versions](https://img.shields.io/pypi/pyversions/pydantic.svg)](https://github.com/tomaszbk/chat-machines-python)
 [![license](https://img.shields.io/github/license/pydantic/pydantic.svg)](https://github.com/tomaszbk/chat-machines-python/blob/master/LICENSE)
 
