@@ -1,10 +1,17 @@
 name: Publish
 
-jobs:
-  uv-example:
-    name: python
-    runs-on: ubuntu-latest
+on:
+  push:
+    tags:
+      # Publish on any tag starting with a `v`, e.g. v1.2.3
+      - v*
 
+jobs:
+  publish-pypi:
+    name: publish to pypi
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -15,7 +22,11 @@ jobs:
           # Install a specific version of uv.
           version: "0.6.16"
 
-      - name: "Set up Python"
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: ".python-version"
+      - name: Set up Python
+        run: uv python install 3.12  # Or whatever version I want to use.
+
+      - name: Build
+        run: uv build
+
+      - name: Publish
+        run: uv publish
